@@ -35,6 +35,16 @@ public class Calculator {
             return;
         }
 
+        System.out.print("사칙연산 기호를 입력하세요: ");
+        try{
+            char operation = sc.next().charAt(0);
+            if(operation != '+' && operation != '-' && operation != '*' && operation != '/') {
+                throw new Exception();
+            }
+        }catch (Exception e){
+            System.out.println("사칙연산 기호를 입력해주세요.");
+            return;
+        }
 
     }
 }
