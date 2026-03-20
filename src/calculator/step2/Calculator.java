@@ -2,6 +2,7 @@ package calculator.step2;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Calculator {
@@ -31,5 +32,14 @@ public class Calculator {
 
     public void setResults(int result) {
         this.results.add(result);
+    }
+
+    public void removeResult(){
+        try {
+            this.results.removeFirst();
+        }catch (NoSuchElementException e){
+            System.out.println("더 이상 지울 값이 없습니다.");
+            return;
+        }
     }
 }
