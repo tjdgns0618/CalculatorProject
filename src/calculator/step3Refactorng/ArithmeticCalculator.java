@@ -1,7 +1,6 @@
 package calculator.step3Refactorng;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -13,7 +12,6 @@ public class ArithmeticCalculator<T extends Number> {
     final private LambdaTest divideNum =  (a, b) -> a / b;
 
     ArrayList<Double> results = new ArrayList<>();
-    ArrayList<Double> searchs = new ArrayList<>();
 
     public double calculate(T firstNum, T secondNum, Operator operator) {
         double num1 = firstNum.doubleValue();
@@ -56,9 +54,6 @@ public class ArithmeticCalculator<T extends Number> {
     }
 
     public ArrayList<Double> getSearch(double number){
-        searchs.clear();
-        searchs = results.stream().filter(num -> num >= number).collect(Collectors.toCollection(ArrayList::new));
-
-        return searchs;
+         return results.stream().filter(num -> num >= number).collect(Collectors.toCollection(ArrayList::new));
     }
 }
