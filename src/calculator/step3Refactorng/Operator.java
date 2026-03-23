@@ -1,4 +1,4 @@
-package calculator.step3;
+package calculator.step3Refactorng;
 
 public enum Operator {
     PLUS('+'),
