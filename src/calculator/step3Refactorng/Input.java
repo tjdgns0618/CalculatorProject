@@ -6,7 +6,6 @@ import java.util.Scanner;
 // 사용자의 입력을 받는 함수 선언할 클래스
 public class Input {
     final private Scanner sc = new Scanner(System.in);
-    final private ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator<>();
 
     // 숫자를 입력 받는 함수
     public double inputNumber(String desc){
@@ -31,13 +30,10 @@ public class Input {
             try {
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char operation = sc.next().charAt(0);
-                if (operation != '+' && operation != '-' && operation != '*' && operation != '/') {
-                    throw new Exception();
-                }else {
-                    return Operator.getOperator(operation);
-                }
-            } catch (Exception e) {
-                System.out.println("사칙연산 기호만 입력해주세요!!!");
+                return Operator.getOperator(operation);
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("사칙연산 기호(+, -, *, /)만 입력해주세요!!!");
                 sc.nextLine();
             }
         }
