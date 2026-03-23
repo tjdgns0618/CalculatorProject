@@ -27,19 +27,19 @@ public class Main {
                     return;
                 case "remove": case "Remove":
                     while(true){
-                        System.out.println("삭제하시겠습니까? (yes 입력시 첫 결과값 삭제, no 입력 시 삭제 모드 종료)");
+                        System.out.println("삭제하시겠습니까? (yes 입력시 가장 오래된 결과값 삭제, no 입력 시 삭제 모드 종료)");
                         System.out.println("저장된 결과: " + arithmeticCalculator.getResults());
                         String select = input.inputAgain();
-                        if(select.equals("yes")) {
-                            arithmeticCalculator.removeResult();
-                        }
-                        else if(select.equals("no")){
-                            break;
-                        }else{
-                            System.out.println("yes나 no를 입력해 주세요.");
+                        switch (select){
+                            case "yes": case "Yes": case "y": case "Y":
+                                arithmeticCalculator.removeResult();
+                                break;
+                            case "no": case "No": case "n": case "N":
+                                break;
+                            default:
+                                System.out.println("yes나 no를 입력해 주세요.");
                         }
                     }
-                    break;
                 case "search": case "Search":
                     System.out.println("몇보다 높은 숫자를 찾을건가요?");
                     double number = input.inputNumber("숫자를 입력해주세요: ");
