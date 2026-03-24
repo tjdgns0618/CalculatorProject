@@ -13,12 +13,9 @@ public class Input {
             try {
                 System.out.print(desc);
                 double num = sc.nextDouble();
-                if (num < 0) {
-                    throw new InputMismatchException();
-                }
                 return num;
             } catch (InputMismatchException e) {
-                System.out.println("양의 실수를 입력해주세요.");
+                System.out.println("실수를 입력해주세요.");
                 sc.nextLine();
             }
         }
