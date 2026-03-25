@@ -40,4 +40,8 @@ public class Input {
     public String inputAgain(){
         return sc.next();
     }
+
+    public void closeScanner(){
+        sc.close();
+    }
 }

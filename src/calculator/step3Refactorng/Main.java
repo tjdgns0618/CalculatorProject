@@ -31,6 +31,7 @@ public class Main {
             switch (remove){
                 case "exit" : case "Exit":
                     System.out.println("프로그램을 종료합니다.");
+                    input.closeScanner();
                     return;
                 case "remove": case "Remove":
                     boolean removeMode = true;
