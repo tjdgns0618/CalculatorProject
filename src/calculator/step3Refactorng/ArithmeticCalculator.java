@@ -5,11 +5,11 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {
-    private double result;
-    final private LambdaTest addNum =  (a, b) -> a + b;
-    final private LambdaTest minusNum =  (a, b) -> a - b;
-    final private LambdaTest multiplyNum =  (a, b) -> a * b;
-    final private LambdaTest divideNum =  (a, b) -> a / b;
+    // Enum에서 biFucntion을 이용해서 람다식을 만들었기 때문에 사용 안하게 됨
+//    final private LambdaTest addNum =  Double::sum;
+//    final private LambdaTest minusNum =  (a, b) -> a - b;
+//    final private LambdaTest multiplyNum =  (a, b) -> a * b;
+//    final private LambdaTest divideNum =  (a, b) -> a / b;
 
     ArrayList<Double> results = new ArrayList<>();
 
@@ -17,24 +17,10 @@ public class ArithmeticCalculator<T extends Number> {
         double num1 = firstNum.doubleValue();
         double num2 = secondNum.doubleValue();
 
-        switch (operator){
-            case PLUS:
-                this.result = addNum.apply(num1, num2);
-                break;
-            case MINUS:
-                this.result = minusNum.apply(num1, num2);
-                break;
-            case MULTIPLY:
-                this.result = multiplyNum.apply(num1, num2);
-                break;
-            case DIVIDE:
-                this.result = Math.round(divideNum.apply(num1,num2) * 100) / 100.0; // 소숫점 2자리까지만 반올림
-                break;
-            default:
-                System.out.println("사칙연산이 아닌 값이 들어가 있습니다.");
-                break;
-        }
-        return this.result;
+        // Enum의 biFunction을 이용하여서 (람다)연산 후 결과 출력
+        double result = operator.calculate(num1, num2);
+
+        return result;
     }
 
     public ArrayList<Double> getResults() {
@@ -47,6 +33,7 @@ public class ArithmeticCalculator<T extends Number> {
 
     public void removeResult(){
         try {
+            // removeFirst는 jdk 21 버전 부터 호환되는 최신 문법이고 이전버전에서는 remove(0)을 사용
             this.results.removeFirst();
         }catch (NoSuchElementException e){
             System.out.println("더 이상 지울 값이 없습니다.");
@@ -54,6 +41,8 @@ public class ArithmeticCalculator<T extends Number> {
     }
 
     public ArrayList<Double> getSearch(double number){
-         return results.stream().filter(num -> num >= number).collect(Collectors.toCollection(ArrayList::new));
+         return results.stream()
+                 .filter(num -> num >= number)
+                 .collect(Collectors.toCollection(ArrayList::new));
     }
 }
