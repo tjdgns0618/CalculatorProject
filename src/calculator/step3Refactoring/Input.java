@@ -1,4 +1,4 @@
-package calculator.step3Refactorng;
+package calculator.step3Refactoring;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,8 +12,7 @@ public class Input {
         while(true) {
             try {
                 System.out.print(desc);
-                double num = sc.nextDouble();
-                return num;
+                return sc.nextDouble();
             } catch (InputMismatchException e) {
                 System.out.println("실수를 입력해주세요.");
                 sc.nextLine();

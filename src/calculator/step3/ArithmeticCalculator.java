@@ -10,7 +10,7 @@ public class ArithmeticCalculator<T extends Number> {
     final private LambdaTest multiplyNum =  (a, b) -> a * b;
     final private LambdaTest divideNum =  (a, b) -> a / b;
 
-    ArrayList<Double> results = new ArrayList<>();
+    private final ArrayList<Double> results = new ArrayList<>();
 //    ArrayList<Double> searchs = new ArrayList<>();
 
     public double calculate(T firstNum, T secondNum, Operator operator) {

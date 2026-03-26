@@ -1,4 +1,4 @@
-package calculator.step3Refactorng;
+package calculator.step3Refactoring;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class Main {
                 result = doubleCalculator.calculate(firstNumber,secondNumber,operator);
             // 두 값 중에 하나라도 실수라면
 
-            doubleCalculator.setResults(result);
+            doubleCalculator.addResult(result);
             System.out.println("계산 결과: " + result);
             System.out.println("저장된 결과: " + doubleCalculator.getResults() + "\n");
 

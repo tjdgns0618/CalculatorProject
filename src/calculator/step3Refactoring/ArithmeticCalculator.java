@@ -1,33 +1,25 @@
-package calculator.step3Refactorng;
+package calculator.step3Refactoring;
 
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {
-    // Enum에서 biFucntion을 이용해서 람다식을 만들었기 때문에 사용 안하게 됨
-//    final private LambdaTest addNum =  Double::sum;
-//    final private LambdaTest minusNum =  (a, b) -> a - b;
-//    final private LambdaTest multiplyNum =  (a, b) -> a * b;
-//    final private LambdaTest divideNum =  (a, b) -> a / b;
 
-    ArrayList<Double> results = new ArrayList<>();
+    private final List<Double> results = new ArrayList<>();
 
     public double calculate(T firstNum, T secondNum, Operator operator) {
         double num1 = firstNum.doubleValue();
         double num2 = secondNum.doubleValue();
 
         // Enum의 biFunction을 이용하여서 (람다)연산 후 결과 출력
-        double result = operator.calculate(num1, num2);
-
-        return result;
+        return operator.calculate(num1, num2);
     }
 
-    public ArrayList<Double> getResults() {
-        return results;
+    public List<Double> getResults() {
+        return Collections.unmodifiableList(results);
     }
 
-    public void setResults(double result) {
+    public void addResult(double result) {
         this.results.add(result);
     }
 
@@ -40,9 +32,9 @@ public class ArithmeticCalculator<T extends Number> {
         }
     }
 
-    public ArrayList<Double> getSearch(double number){
+    public List<Double> getSearch(double number){
          return results.stream()
                  .filter(num -> num >= number)
-                 .collect(Collectors.toCollection(ArrayList::new));
+                 .collect(Collectors.toList());
     }
 }

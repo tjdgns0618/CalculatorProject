@@ -1,4 +1,4 @@
-package calculator.step3Refactorng;
+package calculator.step3Refactoring;
 
 import java.util.function.BiFunction;
 
