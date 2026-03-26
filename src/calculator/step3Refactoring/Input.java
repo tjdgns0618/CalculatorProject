@@ -12,10 +12,16 @@ public class Input {
         while(true) {
             try {
                 System.out.print(desc);
-                return sc.nextDouble();
+                double number = sc.nextDouble();
+                if(number < 0){
+                    throw new Exception();
+                }
+                return number;
             } catch (InputMismatchException e) {
-                System.out.println("실수를 입력해주세요.");
+                System.out.println("실수를 입력해주세요. 타입 미스 매치");
                 sc.nextLine();
+            }catch (Exception e){
+                System.out.println("양의 실수만 입력해주세요.");
             }
         }
     }

@@ -4,22 +4,21 @@ public class Main {
     public static void main(String[] args) {
         Input input = new Input();
         ArithmeticCalculator<Double> doubleCalculator = new ArithmeticCalculator<>();
-        ArithmeticCalculator<Integer> intCalculator = new ArithmeticCalculator<>();
 
         while (true) {
             double firstNumber = input.inputNumber("첫번째 숫자를 입력해주세요: ");
             double secondNumber = input.inputNumber("두번째 숫자를 입력해주세요: ");
             double result;
             Operator operator = input.inputOperator();
-            if(secondNumber == 0 && operator == Operator.DIVIDE)
+            
+            // 계산 전 분모에 0이 들어가는지 체크
+            if (secondNumber == 0 && operator == Operator.DIVIDE) {
+                System.out.println("나누기에선 분모가 0이 될 수 없습니다.");
                 continue;
+            }
+            
+            result = doubleCalculator.calculate(firstNumber,secondNumber,operator);
 
-            // 두 값이 모두 정수라면
-            if(firstNumber == (int)firstNumber && secondNumber == (int)secondNumber){
-                result = intCalculator.calculate((int)firstNumber,(int)secondNumber,operator);
-            }else
-                result = doubleCalculator.calculate(firstNumber,secondNumber,operator);
-            // 두 값 중에 하나라도 실수라면
 
             doubleCalculator.addResult(result);
             System.out.println("계산 결과: " + result);
@@ -50,6 +49,7 @@ public class Main {
                                 System.out.println("yes나 no를 입력해 주세요.");
                         }
                     }
+                    break;
                 case "search": case "Search":
                     System.out.println("몇보다 높은 숫자를 찾을건가요?");
                     double number = input.inputNumber("숫자를 입력해주세요: ");

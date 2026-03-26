@@ -16,6 +16,7 @@ public class ArithmeticCalculator<T extends Number> {
     }
 
     public List<Double> getResults() {
+        // 방어적 복사 (캡슐화) 읽기 전용 (VIEW) 리스트로 만들어서 반환해준다.
         return Collections.unmodifiableList(results);
     }
 

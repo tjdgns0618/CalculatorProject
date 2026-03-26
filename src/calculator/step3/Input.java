@@ -10,6 +10,11 @@ public class Input {
     final private Scanner sc = new Scanner(System.in);
     final private ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator<>();
 
+    /*
+    이 코드에서는 재귀호출 방식으로 이루어져있어 StackOverflow가 발생할 수 있다.
+    이 방식을 최대한 피하도록 해야겠다.
+     */
+
     // 숫자를 입력 받는 함수
     public void inputNumbers(){
         while(true) {
@@ -28,6 +33,13 @@ public class Input {
             } catch (InputMismatchException exception) {
                 System.out.println("양의 정수를 입력해주세요. 타입 미스 매치");
                 sc.nextLine();
+
+                /*
+                14. throw new Exception()은 안티패턴입니다. 음수 입력 시 new Exception()을 throw하고 있는데, 이는 너무 포괄적입니다.
+                    구체적인 예외를 사용해야 합니다. 예외 또한 상속 구조를 가지고 있기때문에 내가 처리해야하는 예외가 아니라 실제 발생해야 하는 예외도
+                    catch하게 됩니다.
+                 */
+
             } catch (Exception e) {
                 System.out.println("양의 정수를 입력해주세요.");
                 sc.nextLine();
