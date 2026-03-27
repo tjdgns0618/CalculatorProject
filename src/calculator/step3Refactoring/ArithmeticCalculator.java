@@ -36,6 +36,6 @@ public class ArithmeticCalculator<T extends Number> {
     public List<Double> getSearch(double number){
          return results.stream()
                  .filter(num -> num >= number)
-                 .collect(Collectors.toList());
+                 .toList();
     }
 }
